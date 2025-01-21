@@ -1,0 +1,102 @@
+  /*-------------------HEADER------------------*/
+.header {
+    margin: 10px 200px;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+  }
+  /*-------------------LOGO------------------*/
+  .logo {
+    width: 150px;
+    margin: 0 30px;
+  }
+  /*-------------------SEARCH-BAR------------------*/
+  .search-box {
+    width: max-content;
+    align-items: center;
+    border-radius: 30px;
+    background: var(--color2);
+    border: 2px solid var(--color1);
+    padding: 15px 20px;
+    cursor: text;
+    width: 4000px;
+    margin: 0;
+  }
+  .search-bar {
+    outline: none;
+    background: transparent;
+    border: none;
+    flex: 1;
+    margin-left: 15px;
+    width: 350px;
+  }
+  .search-bar,
+  .fa-magnifying-glass {
+    font-size: 20px;
+    color: var(--color4);
+  }
+  .search-bar::placeholder {
+    color: var(--color4);
+  }
+  .search-bar:focus::placeholder {
+    transition: var(--transition-a);
+    color: transparent;
+  }
+  /*-------------------FAV-CART-LOG------------------*/
+  .favorites,
+  .cart,
+  .login {
+    position: relative;
+    font-size: 15px;
+    border-radius: 30px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+  }
+  .login a,
+  .favorites a,
+  .cart a {
+    display: flex;
+    align-items: center;
+  }
+  .login i,
+  .favorites i,
+  .cart i {
+    font-size: 25px;
+    margin-right: 8px;
+  }
+  .favorites:hover,
+  .cart:hover,
+  .login:hover {
+    cursor: pointer;
+  }
+  .fa-cart-shopping,
+  .fa-user,
+  .fa-heart {
+    color: var(--color1);
+  }
+  .cart a::after,
+  .favorites a::after,
+  .login a::after {
+    width: 75%;
+    background: var(--color1);
+    height: 3px;
+    content: "";
+    position: absolute;
+    border-radius: 15px;
+    bottom: 0px;
+    left: 17px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform.3s;
+  }
+  .cart a:hover::after,
+  .favorites a:hover::after,
+  .login a:hover::after,
+  .cart a.clicked::after,
+  .favorites a.clicked::after,
+  .login a.clicked::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }

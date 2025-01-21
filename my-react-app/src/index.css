@@ -1,0 +1,36 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+  }
+  :root {
+    --color1: rgb(44, 155, 58);
+    --color2: white;
+    --color3: #f2fff4;
+    --color4: rgb(73, 73, 73);
+    --color5: #f9f9f9;
+    --color6: rgb(175, 175, 175);
+    --height: 8px;
+    --transition-a: 0.2s;
+    --transition-b: 0.3s;
+  }
+  body {
+    background: var(--color2);
+  }
+  a {
+    text-decoration: none;
+    color: var(--color4);
+  }
+  li {
+    list-style: none;
+  }
+  a,
+  .header,
+  .navigation,
+  .menu,
+  .search-box,
+  .search-bar {
+    display: flex;
+    flex-direction: row;
+  }
