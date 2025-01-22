@@ -19,7 +19,7 @@ export default function App() {
     <>
       <BrowserRouter>
       <Header/>
-      <Navigation />
+      <Navigation/>
       <ImageSlider/>
 
       <Routes>

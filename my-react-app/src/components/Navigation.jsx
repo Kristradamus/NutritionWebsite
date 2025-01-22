@@ -39,7 +39,7 @@ export default function Navigation() {
           <a ref={catToggleRef} className="categories-toggle" href="#" onClick={handleCategoryToggle}>
             <i className="fa-solid fa-bars"></i> CATEGORIES
           </a>
-          <ul ref={dropContentRef} className={'dropdown-content ${isDropdownVisible ? "show" : ""}'}>
+          <ul ref={dropContentRef} className={`dropdown-content ${isDropdownVisible ? "show" : ""}`}>
             <li><a href="#">TOP products</a></li>
             <li><a href="#">Promotions</a></li>
             <li><a href="#">Bio</a></li>

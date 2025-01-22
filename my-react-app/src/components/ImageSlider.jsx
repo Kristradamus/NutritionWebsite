@@ -1,8 +1,41 @@
 import "./ImageSlider.css";
-import { Link } from 'react-router-dom';
+import cosmetics from "../images/cosmetics.jpg";
+import fatPeople from "../images/fatPeople.jpg";
+import promotions from "../images/promotions.jpg";
+import protein from "../images/protein.jpg";
+import vitamins from "../images/vitamins.jpg";
+import React, { useState } from "react";
 
 export default function ImageSlider() {
-    <slider className = "slider">
-        <h1>sys</h1>
-    </slider>
+  const images = [cosmetics, fatPeople, promotions, protein, vitamins];
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % images.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  return (
+    <div className="slider">
+      <div className="slides">
+        {images.map((image, index) => (
+          <img
+            key={index}
+            className={`slide ${index === currentSlide ? "active" : ""}`}
+            src={image}
+            alt={`Slide ${index + 1}`}
+          />
+        ))}
+      </div>
+      <button className="prevSlide" onClick={prevSlide}>
+        <i className="fa-solid fa-angle-left"></i>
+      </button>
+      <button className="nextSlide" onClick={nextSlide}>
+        <i className="fa-solid fa-angle-right"></i>
+      </button>
+    </div>
+  );
 }

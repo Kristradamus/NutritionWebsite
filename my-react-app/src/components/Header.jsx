@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import logo from "./freshBalance.png";
+import logo from "../images/freshBalance.png";
 import "./Header.css";
 import { Link } from 'react-router-dom';
 
