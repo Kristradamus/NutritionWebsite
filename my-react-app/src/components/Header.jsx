@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     <header className="header">
-      <Link to="/front-page">
+      <Link to="/">
         <img className="logo" src={logo} alt="freshBalance" />
       </Link>
       <div className="search-box" onClick={handleSearchBoxClick}>
@@ -33,14 +33,14 @@ export default function Header() {
         </Link>
       </div>
       <div className="favorites">
-        <a href="#" className={clickedItem === 'favorites' ? 'clicked' : ''} onClick={() => handleItemClick('favorites')} >
+        <Link to="/favourites" className={clickedItem === 'favorites' ? 'clicked' : ''} onClick={() => handleItemClick('favorites')} >
           <i className="fa-solid fa-heart"></i>Favorites
-        </a>
+        </Link>
       </div>
       <div className="cart">
-        <a href="#" className={clickedItem === 'cart' ? 'clicked' : ''} onClick={() => handleItemClick('cart')} >
+        <Link to="/cart" className={clickedItem === 'cart' ? 'clicked' : ''} onClick={() => handleItemClick('cart')} >
           <i className="fa-solid fa-cart-shopping"></i>Cart
-        </a>
+        </Link>
       </div>
     </header>
   );

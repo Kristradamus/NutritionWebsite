@@ -1,53 +1,47 @@
 .slider {
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
-    height: 600px;
-    overflow: hidden;
-    margin: auto;
-  }
-  
-  .slides {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-  
-  .slide.active {
-    opacity: 1;
-  }
-  
-  button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-  }
-  
-  button:focus {
-    outline: none;
-  }
-  
-  .prevSlide {
-    left: 10px;
-  }
-  
-  .nextSlide {
-    right: 10px;
-  }
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 600px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.slides {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out; /* Smooth sliding animation */
+}
+
+.slide {
+  flex-shrink: 0; /* Prevent shrinking of slides */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image fills the slide properly */
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+button:focus {
+  outline: none;
+}
+
+.prevSlide {
+  left: 10px;
+}
+
+.nextSlide {
+  right: 10px;
+}

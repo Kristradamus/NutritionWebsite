@@ -1,16 +1,28 @@
-/*--------------------------NAVIGATION---------------------------*/
-.fa-bars,.fa-headset {
+/*--------------------------NAVIGATION---------      
+<div className="support">
+        <ul className="menu">
+          <li>
+            <Link className="support" to="/support">
+              <i className="fa-solid fa-headset"></i>SUPPORT
+            </Link>
+          </li>
+        </ul>
+      </div>------------------*/
+.fa-bars, .fa-headset {
   margin-right: 8px;
 }
+
 .support {
-  margin-right: 150px;
+  padding-left: 150px;
 }
+
 .menu {
   background: var(--color1);
   width: 100%;
   margin-left: 150px;
   display: flex;
 }
+
 .menu li a {
   margin: 5px 10px;
   color: var(--color2);
@@ -19,18 +31,22 @@
   padding: 10px 20px;
   box-sizing: border-box;
 }
+
 .menu li a:hover {
   transition: var(--transition-a);
   border: 1px solid var(--color3);
 }
+
 .navigation {
   background: var(--color1);
   display: flex;
   justify-content: space-between;
 }
+
 .dropdown {
   position: relative;
 }
+
 .dropdown-content {
   visibility: hidden;
   opacity: 0;
@@ -46,18 +62,21 @@
   border-top: none;
   box-sizing: border-box;
   padding: 0;
-  box-shadow:0 0  20px rgb(0, 0, 3, 0.2);
+  box-shadow: 0 0 20px rgb(0, 0, 3, 0.2);
   transition: opacity 0.2s ease, transform 0.5s ease, visibility 0s 0.1s;
 }
+
 .dropdown-content.show {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.2s ease, transform 0.5s ease, visibility 0s;
 }
+
 .dropdown-content li {
   margin: 0;
 }
+
 .dropdown-content li a {
   padding: 10px 16px;
   margin: 0;
@@ -66,22 +85,57 @@
   text-decoration: none;
   border-radius: 0;
 }
+
 .dropdown-content li a:hover {
   border-top: 1px solid var(--color6);
   border-bottom: 1px solid var(--color6);
   color: var(--color1);
   background-color: var(--color2);
 }
+
 .dropdown:hover .dropdown-content {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
 }
+
 .dropdown a {
   display: flex;
   align-items: center;
 }
+
 .dropdown i {
   margin-left: 5px;
+}
+
+.sub-menu {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background: var(--color5);
+  min-width: 1000px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  height: 100%;
+  display: none;
+}
+
+.dropdown-content li:hover .sub-menu {
+  display: block;
+}
+
+.sub-menu li a {
+  padding: 10px;
+  color: var(--color4);
+  text-decoration: none;
+  display: block;
+}
+
+.sub-menu li a:hover {
+  background-color: var(--color2);
+  color: var(--color1);
 }

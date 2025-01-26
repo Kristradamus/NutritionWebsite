@@ -1,9 +1,8 @@
 import { useState } from 'react'
 
-export default function Services() {
+export default function Favourites() {
   return (
     <>
-    <h1>hsfusgs</h1>
     </>
   )
 }
