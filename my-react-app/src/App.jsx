@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 const AboutUs = React.lazy(() => import("./pages/aboutUs.jsx"));
 const Communities = React.lazy(() => import("./pages/communities.jsx"));
 const FrontPage = React.lazy(() => import("./pages/frontPage.jsx"));
-const Login = React.lazy(() => import("./pages/login.jsx"));
+const LoginRegistration = React.lazy(() => import("./pages/loginRegistration.jsx"));
 const Profile = React.lazy(() => import("./pages/profile.jsx"));
 const Services = React.lazy(() => import("./pages/services.jsx"));
 const Subscriptions = React.lazy(() => import("./pages/subscriptions.jsx"));
@@ -29,12 +29,12 @@ export default function App() {
               <Route path="/services" element={<Services />} />
               <Route path="/subscriptions" element={<Subscriptions />} />
               <Route path="/support" element={<Support />} />
-              <Route path="/product-page/:promotionName" element={<ProductPage />} />
-            </Route>
+              <Route path="/login" element={<LoginRegistration />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/favourites" element={<Favourites />} />
-              <Route path="/login" element={<Login />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/product-page/:promotionName" element={<ProductPage />} />
+            </Route>
           </Routes>
         </Suspense>
       </BrowserRouter>

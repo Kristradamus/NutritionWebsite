@@ -10,12 +10,11 @@ export default function ImageSlider() {
   const images = [cosmetics, fatPeople, promotions, protein, vitamins];
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Automatically move to the next slide every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 3000); // 3 seconds interval
-    return () => clearInterval(interval); // Cleanup on component unmount
+    }, 3000);
+    return () => clearInterval(interval);
   }, [currentSlide]);
 
   const nextSlide = () => {

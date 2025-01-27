@@ -1,13 +1,13 @@
   /*-------------------HEADER------------------*/
 .header {
-    margin: 10px 200px;
+    margin: 0px 200px;
     align-items: center;
     position: relative;
     justify-content: space-between;
   }
   /*-------------------LOGO------------------*/
   .logo {
-    width: 150px;
+    width: 120px;
     margin: 0 30px;
   }
   /*-------------------SEARCH-BAR------------------*/
@@ -15,11 +15,11 @@
     width: max-content;
     align-items: center;
     border-radius: 30px;
-    background: var(--color2);
-    border: 2px solid var(--color1);
-    padding: 15px 20px;
+    background: var(--white);
+    border: 2px solid var(--green);
+    padding: 10px 20px;
     cursor: text;
-    width: 4000px;
+    width: 100%;
     margin: 0;
   }
   .search-bar {
@@ -32,27 +32,39 @@
   }
   .search-bar,
   .fa-magnifying-glass {
-    font-size: 20px;
-    color: var(--color4);
+    font-size: var(--font);
+    color: var(--darker);
   }
   .search-bar::placeholder {
-    color: var(--color4);
+    color: var(--darker);
   }
   .search-bar:focus::placeholder {
     transition: var(--transition-a);
     color: transparent;
+  }
+  .search-box i{
+    font-size:var(--iconFont);
+    color:var(--green)
+  }
+  .search-box i:hover{
+    cursor:pointer;
+    background-color:var(--dark);;
+  }
+  .search-box.expanded{
+    display:absolute;
+    padding-bottom:100px;
   }
   /*-------------------FAV-CART-LOG------------------*/
   .favorites,
   .cart,
   .login {
     position: relative;
-    font-size: 15px;
+    font-size:var(--font);
     border-radius: 30px;
     padding: 15px 20px;
     display: flex;
     align-items: center;
-    margin: 10px;
+    margin: 5px;
   }
   .login a,
   .favorites a,
@@ -63,7 +75,7 @@
   .login i,
   .favorites i,
   .cart i {
-    font-size: 25px;
+    font-size: var(--iconFont);
     margin-right: 8px;
   }
   .favorites:hover,
@@ -74,13 +86,13 @@
   .fa-cart-shopping,
   .fa-user,
   .fa-heart {
-    color: var(--color1);
+    color: var(--green);
   }
   .cart a::after,
   .favorites a::after,
   .login a::after {
     width: 75%;
-    background: var(--color1);
+    background: var(--green);
     height: 3px;
     content: "";
     position: absolute;

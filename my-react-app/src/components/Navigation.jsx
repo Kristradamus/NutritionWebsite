@@ -101,7 +101,7 @@ const categories = [
     ],
   },
   {
-    name: "Cosmetics",
+    name:"Cosmetics",
     subcategories: [
       {
         title: "Skin Care",
@@ -200,8 +200,9 @@ export default function Navigation() {
             {categories.map((category, index) => (
               <li key={index}>
                 <a href={category.link}>{category.name}</a>
+                <div className="dropdown-content-sub-menu">
                 <ul className="sub-menu">
-                  <h3>{category.name}</h3>
+                  <h2>{category.name}</h2>
                   {category.subcategories.map((subCategory, subIndex) =>
                     subCategory.items ? (
                       <div key={subIndex}>
@@ -219,6 +220,7 @@ export default function Navigation() {
                     )
                   )}
                 </ul>
+                </div>
               </li>
             ))}
           </ul>

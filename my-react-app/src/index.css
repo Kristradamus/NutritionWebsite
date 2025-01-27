@@ -5,15 +5,16 @@
     box-sizing: border-box;
   }
   :root {
-    --color1: rgb(44, 155, 58);
-    --color2: white;
-    --color3: #f2fff4;
-    --color4: rgb(73, 73, 73);
-    --color5: #f9f9f9;
-    --color6: rgb(175, 175, 175);
+    --green: rgb(44, 155, 58);
+    --white: white;
+    --lightGreen: #f2fff4;
+    --darker: rgb(73, 73, 73);
+    --light: #f9f9f9;
+    --dark: rgb(175, 175, 175);
     --height: 8px;
-    --transition-a: 0.2s;
-    --transition-b: 0.3s;
+    --font:15px;
+    --iconFont:20px;
+    --transition-a: 0.3s;
   }
   body {
     background: var(--color2);
