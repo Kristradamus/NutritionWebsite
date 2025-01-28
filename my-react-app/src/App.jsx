@@ -22,19 +22,19 @@ export default function App() {
       <BrowserRouter>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
-              <Route element={<MainLayout />}>
+            <Route element={<MainLayout />}>
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/communities" element={<Communities />} />
               <Route path="/" element={<FrontPage />} />
               <Route path="/services" element={<Services />} />
               <Route path="/subscriptions" element={<Subscriptions />} />
               <Route path="/support" element={<Support />} />
-              <Route path="/login" element={<LoginRegistration />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/favourites" element={<Favourites />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/product-page/:promotionName" element={<ProductPage />} />
             </Route>
+            <Route path="/login" element={<LoginRegistration />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

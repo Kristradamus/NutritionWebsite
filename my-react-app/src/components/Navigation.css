@@ -131,13 +131,13 @@
   background-color: var(--white);
   color: var(--green);
 }
-h2{
+.sub-menu h2{
   font-size:var(--font) + 30px;
   margin:5px 10px;
   padding:5px 10px;
   color:var(--green);
 }
-h3{
+.sub-menu h3{
   font-size:var(--font) + 10px;
   margin:5px 10px;
   padding:5px 10px;

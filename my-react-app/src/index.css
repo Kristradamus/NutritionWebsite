@@ -6,10 +6,10 @@
   }
   :root {
     --green: rgb(44, 155, 58);
-    --white: white;
     --lightGreen: #f2fff4;
-    --darker: rgb(73, 73, 73);
+    --white: white;
     --light: #f9f9f9;
+    --darker: rgb(73, 73, 73);
     --dark: rgb(175, 175, 175);
     --height: 8px;
     --font:15px;
@@ -17,11 +17,11 @@
     --transition-a: 0.3s;
   }
   body {
-    background: var(--color2);
+    background: var(--white);
   }
   a {
     text-decoration: none;
-    color: var(--color4);
+    color: var(--darker);
   }
   li {
     list-style: none;

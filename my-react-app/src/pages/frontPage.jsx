@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import Title from "../components/Title.jsx"
+import "./frontPage.css"
 
 export default function FrontPage() {
   return (
     <>
-    <Title/>
     </>
   )
 }
