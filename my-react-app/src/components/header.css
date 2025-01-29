@@ -14,7 +14,7 @@
   .search-box {
     width: max-content;
     align-items: center;
-    border-radius: 30px;
+    border-radius: calc(var(--radius) + 15px);
     background: var(--white);
     border: 2px solid var(--green);
     padding: 10px 20px;
@@ -60,7 +60,7 @@
   .login {
     position: relative;
     font-size:var(--font);
-    border-radius: 30px;
+    border-radius: calc(var(--radius) + 15px);
     padding: 15px 20px;
     display: flex;
     align-items: center;
@@ -96,7 +96,7 @@
     height: 3px;
     content: "";
     position: absolute;
-    border-radius: 15px;
+    border-radius: var(--radius);
     bottom: 0px;
     left: 17px;
     transform: scaleX(0);

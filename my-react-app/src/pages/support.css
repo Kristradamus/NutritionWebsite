@@ -1,0 +1,54 @@
+.support {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .support .sideBar {
+    background-color: var(--light);
+    max-width: 300px;
+    width: 100%;
+    border: 1px solid var(--dark);
+    border-right: none; /* Remove the sideBar's right border */
+  }
+  
+  .support .main {
+    width: 100%;
+    border: 1px solid var(--dark); /* Ensure consistent borders */
+    border-left: none; /* Remove the left border of the main section to align */
+    background-color: var(--white); /* Match background with hover effect */
+  }
+  
+  /* Sidebar Elements */
+  .support .sideBar .elements {
+    list-style: none; /* Remove bullets */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .support .sideBar .elements li {
+    display: block; /* Ensure li spans full width */
+  }
+  
+  .support .sideBar .elements li a {
+    display: block; /* Make anchor tags behave like block elements */
+    padding: 10px 20px;
+    font-size: var(--font);
+    text-decoration: none; /* Remove underline */
+    color: var(--dark);
+    background-color: var(--light); /* Match the sidebar's default background */
+    border-right: 1px solid var(--dark); /* Default right border */
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  }
+  
+  .support .sideBar .elements li a:hover {
+    cursor: pointer;
+    background-color: var(--white); /* Matches the main section's background */
+    border-right: none; /* Removes right border to connect with the main section */
+    color: var(--green);
+    border-bottom:1px solid var(--dark);
+    border-top:1px solid var(--dark);
+  }
+  
+  

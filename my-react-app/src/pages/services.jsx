@@ -3,8 +3,7 @@ import "./services.css"
 
 export default function Services() {
   return (
-    <>
-    <h1>hsfusgs</h1>
-    </>
+    <div className="services">
+    </div>
   )
 }

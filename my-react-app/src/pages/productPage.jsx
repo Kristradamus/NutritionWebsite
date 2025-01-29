@@ -3,7 +3,7 @@ import "./productPage.css"
 
 export default function ProductPage() {
   return (
-    <>
-    </>
+    <div className="productPage">
+    </div>
   );
 }

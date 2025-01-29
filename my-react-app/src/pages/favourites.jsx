@@ -3,7 +3,7 @@ import "./favourites.css"
 
 export default function Favourites() {
   return (
-    <>
-    </>
+    <div className="favourites">
+    </div>
   )
 }

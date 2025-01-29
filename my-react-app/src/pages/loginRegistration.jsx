@@ -25,9 +25,11 @@ export default function LoginRegistration() {
   };
 
   return (
-    <>
+    <div className="loginRegister">
       <div className="emailBox">
+        <Link to="/">
         <img className="logo" src={logo} alt="Fresh Balance" />
+        </Link>
         <div className="emailBox2">
           <h1>Hello!</h1>
           <h3>Please enter your email address</h3>
@@ -58,6 +60,6 @@ export default function LoginRegistration() {
       </div>
       <div className="Login"></div>
       <div className="Register"></div>
-    </>
+    </div>
   );
 }
