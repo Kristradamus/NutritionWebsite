@@ -12,10 +12,10 @@
     --darker: rgb(73, 73, 73);
     --dark: rgb(175, 175, 175);
     --lightDark:#ececec;
+    --black:black;
     --height: 8px;
     --radius:15px;
     --font:15px;
-    --iconFont:20px;
     --transition-a: 0.3s;
   }
   body {

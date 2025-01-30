@@ -1,20 +1,20 @@
+/*-----------------------------------------NAVIGATION-----------------------------------------------*/
+.navigation {
+  background: var(--green);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
 .fa-bars, .fa-headset {
   margin-right: 8px;
 }
-
-.support {
-  padding-left: 150px;
-}
-
-.menu {
+.navMenu {
   background: var(--green);
-  width: 100%;
-  margin-left: 150px;
+  margin: 0px 150px;
   display: flex;
 }
-
-.menu li a {
-  font-size:var(--font);
+.navCatToggle, .navMenuElements2 {
+  font-size: var(--font);
   margin: 5px 10px;
   color: var(--white);
   border: 1px solid transparent;
@@ -22,23 +22,17 @@
   padding: 5px 10px;
   box-sizing: border-box;
 }
-
-.menu li a:hover {
+.navCatToggle:hover, .navMenuElements2:hover {
   transition: var(--transition-a);
   border: 1px solid var(--lightGreen);
 }
-
-.navigation {
-  background: var(--green);
-  display: flex;
-  justify-content: space-between;
-}
-
-.dropdown {
+/*----------------------------------DROPDOWN-MENU--------------------------------------------*/
+.navDropDown {
   position: relative;
 }
-
-.dropdown-content {
+.navDropDownContent{
+  display: flex;
+  flex-direction: column;
   visibility: hidden;
   opacity: 0;
   transform: translateY(-10px);
@@ -48,59 +42,62 @@
   z-index: 1;
   top: 100%;
   margin: 0;
+  padding: 0;
   left: 0;
   border: 1px solid var(--dark);
-  border-top: none;
+  border-right:none;
   box-sizing: border-box;
-  padding: 0;
   box-shadow: 0 0 20px rgb(0, 0, 3, 0.2);
   transition: opacity 0.2s ease, transform 0.5s ease, visibility 0s 0.1s;
 }
-
-.dropdown-content.show {
+.navDropDownContent.show {
   visibility: visible;
-  border: 1px solid var(--dark);
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.2s ease, transform 0.5s ease, visibility 0s;
 }
-
-.dropdown-content li {
+.navDropDownContent li {
   margin: 0;
 }
-
-.dropdown-content li a {
-  padding: 10px 16px;
+.navDropDownContent li a {
+  border-right: 1px solid var(--dark);
+  padding: 10px 20px;
+  font:var(--font);
   margin: 0;
   color: var(--darker);
   display: block;
   text-decoration: none;
   border-radius: 0;
+  box-sizing: border-box;
 }
-
-.dropdown-content li a:hover {
+.navDropDownContent li a:hover {
   border-top: 1px solid var(--dark);
   border-bottom: 1px solid var(--dark);
+  border-right:none;
   color: var(--green);
   background-color: var(--white);
 }
-.dropdown:hover .dropdown-content {
+.navDropDownContent li:last-child a {
+  border-bottom: none;
+}
+.navDropDownContent li:first-child a {
+  border-top: none;
+}
+.navDropDown:hover .navDropDown {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
 }
-
-.dropdown a {
+.navDropDown a {
   display: flex;
   align-items: center;
 }
-
-.dropdown i {
+.navDropDown i {
   margin-left: 5px;
 }
-
-.sub-menu {
+/*-------------------------------------------SUB-MENU--------------------------------------------*/
+.navSubMenu {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -108,38 +105,44 @@
   left: 100%;
   top: 0;
   background: var(--white);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   min-width: 1000px;
   z-index: 999;
   height: 100%;
   display: none;
-  columns:3;
-  border: 1px solid var(--lightGreen);
+  columns: 3;
+  margin-left: 0px;
+  border: 1px solid var(--dark);
+  border-left:none;
 }
-
-.dropdown-content li:hover .sub-menu {
+.navDropDownContent li:hover .navSubMenu {
   display: block;
 }
-
-.sub-menu li a {
+.navSubMenu li a {
+  font:var(--font);
   color: var(--darker);
   text-decoration: none;
   display: block;
+  padding: 10px 20px;
+  border: none;
 }
-
-.sub-menu li a:hover {
-  background-color: var(--white);
+.navSubMenu li a:hover {
+  background: none;
+  color: var(--green);
+  padding: 10px 20px;
+  margin: 0;
+  transition:none;
+  border:none;
+  animation:none;
+}
+.navSubMenu h2 {
+  font-size: calc(var(--font) + 15px);
+  margin: 5px 10px;
+  padding: 5px 10px;
   color: var(--green);
 }
-.sub-menu h2{
-  font-size:var(--font) + 30px;
-  margin:5px 10px;
-  padding:5px 10px;
-  color:var(--green);
-}
-.sub-menu h3{
-  font-size:var(--font) + 10px;
-  margin:5px 10px;
-  padding:5px 10px;
-  color:var(--green);
+.navSubMenu h3 {
+  font-size: calc(var(--font) + 5px);
+  margin: 5px 10px;
+  padding: 5px 10px;
+  color: var(--green);
 }

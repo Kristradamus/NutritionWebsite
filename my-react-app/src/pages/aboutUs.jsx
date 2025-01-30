@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import "./aboutUs.css"
+import React, { useState, useEffect } from "react";
+import "./aboutUs.css";
 
 export default function AboutUs() {
-  return (
+  return(
     <div className="aboutUs">
     </div>
-  )
+  );
 }

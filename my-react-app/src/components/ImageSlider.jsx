@@ -27,23 +27,15 @@ export default function ImageSlider() {
 
   return (
     <div className="slider">
-      <div
-        className="slides"
-        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-      >
+      <div className="sliderSlides" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
         {images.map((image, index) => (
-          <img
-            key={index}
-            className="slide"
-            src={image}
-            alt={`Slide ${index + 1}`}
-          />
+          <img key={index} className="sliderSlide" src={image} alt={`Slide ${index + 1}`}/>
         ))}
       </div>
-      <button className="prevSlide" onClick={prevSlide}>
+      <button className="sliderPrevSlide" onClick={prevSlide}>
         <i className="fa-solid fa-angle-left"></i>
       </button>
-      <button className="nextSlide" onClick={nextSlide}>
+      <button className="sliderNextSlide" onClick={nextSlide}>
         <i className="fa-solid fa-angle-right"></i>
       </button>
     </div>

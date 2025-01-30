@@ -1,48 +1,93 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from "react";
 import logo from "../images/freshBalance.png";
 import "./Header.css";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [clickedItem, setClickedItem] = useState(null);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
-
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const searchInputRef = useRef(null);
+  const searchBoxRef = useRef(null);
+  
+  const recommendations = [
+    "Recommendation1",
+    "Recommendation1",
+    "Recommendation2",
+    "Recommendation3",
+    "Recommendation4",
+    "Recommendation4",
+    "Recommendation2",
+  ];
 
   const handleSearchBoxClick = () => {
-    setIsSearchExpanded(!isSearchExpanded);
-    if (searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  };
-  const handleItemClick = (item) => {
-    setClickedItem(item);
+    setIsSearchExpanded(true);
+    setIsDropdownVisible(true);
+    searchInputRef.current?.focus();
   };
 
+  const handleInputChange = (e) => {
+    setSearchQuery(e.target.value);
+    setIsDropdownVisible(e.target.value.length > 0);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Escape") {
+      setIsSearchExpanded(false);
+      setIsDropdownVisible(false);
+      setSearchQuery("");
+    }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (searchBoxRef.current && !searchBoxRef.current.contains(e.target)) {
+        setIsSearchExpanded(false);
+        setIsDropdownVisible(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <header className="header">
+    <div className="header">
       <Link to="/">
-        <img className="logo" src={logo} alt="freshBalance" />
+        <img className="headerLogo" src={logo} alt="freshBalance" />
       </Link>
-      <div className={`search-box ${isSearchExpanded ? '.expanded' : ''}`} onClick={handleSearchBoxClick}>
+
+      <div className={`headerSearchBox ${isSearchExpanded ? "expanded" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
         <i className="fa-solid fa-magnifying-glass"></i>
-        <input ref={searchInputRef} className="search-bar" placeholder="Search"/>
+        <input ref={searchInputRef} className="headerSearchBar" placeholder="Search" value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
+        {isDropdownVisible && (
+          <ul className="headerSearchDropdown">
+            {recommendations.filter((item) => item.toLowerCase().includes(searchQuery.toLowerCase()))
+              .map((item, index) => (
+                <li key={index} onClick={() => setSearchQuery(item)}>
+                  {item}
+                </li>
+              ))}
+          </ul>
+        )}
       </div>
-      <div className="login" onClick={() => handleItemClick('login')}>
-        <Link to="/login" className={clickedItem === 'login' ? 'clicked' : ''}>
+
+      <div className="headerLogin" onClick={() => setClickedItem("login")}>
+        <Link to="/login" className={clickedItem === "login" ? "clicked" : ""}>
           <i className="fa-solid fa-user"></i>Login
         </Link>
       </div>
-      <div className="favorites" onClick={() => handleItemClick('favorites')}>
-        <Link to="/favourites" className={clickedItem === 'favorites' ? 'clicked' : ''}>
+      <div className="headerFavorites" onClick={() => setClickedItem("favorites")}>
+        <Link to="/favourites" className={clickedItem === "favorites" ? "clicked" : ""}>
           <i className="fa-solid fa-heart"></i>Favorites
         </Link>
       </div>
-      <div className="cart" onClick={() => handleItemClick('cart')}>
-        <Link to="/cart" className={clickedItem === 'cart' ? 'clicked' : ''}>
+      <div className="headerCart" onClick={() => setClickedItem("cart")}>
+        <Link to="/cart" className={clickedItem === "cart" ? "clicked" : ""}>
           <i className="fa-solid fa-cart-shopping"></i>Cart
         </Link>
       </div>
-    </header>
+    </div>
   );
 }

@@ -6,22 +6,20 @@
   overflow: hidden;
   margin: auto;
 }
-
-.slides {
+.sliderSlides {
   display: flex;
   width: 100%;
   height: 100%;
   transition: transform 0.5s ease-in-out;
 }
-
-.slide {
+.sliderSlide {
   flex-shrink: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-button {
+.sliderPrevSlide,
+.sliderNextSlide {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -33,15 +31,13 @@ button {
   cursor: pointer;
   z-index: 10;
 }
-
-button:focus {
+.sliderPrevSlide:focus,
+.sliderNextSlide:focus{
   outline: none;
 }
-
-.prevSlide {
+.sliderPrevSlide {
   left: 10px;
 }
-
-.nextSlide {
+.sliderNextSlide {
   right: 10px;
 }

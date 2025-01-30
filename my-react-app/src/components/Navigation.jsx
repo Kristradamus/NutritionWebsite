@@ -190,18 +190,17 @@ export default function Navigation() {
   }, []);
 
   return (
-    <nav className="navigation">
-      <ul className="menu">
-        <li className="dropdown">
-          <a ref={catToggleRef} className="categories-toggle" href="#" onClick={handleCategoryToggle}>
+    <div className="navigation">
+      <ul className="navMenu">
+        <li className="navDropDown">
+          <a ref={catToggleRef} className="navCatToggle" href="#" onClick={handleCategoryToggle}>
             <i className="fa-solid fa-bars"></i> CATEGORIES
           </a>
-          <ul ref={dropContentRef} className={`dropdown-content ${isDropdownVisible ? "show" : ""}`}>
+          <ul ref={dropContentRef} className={`navDropDown ${isDropdownVisible ? "show" : ""}`}>
             {categories.map((category, index) => (
               <li key={index}>
                 <a href={category.link}>{category.name}</a>
-                <div className="dropdown-content-sub-menu">
-                <ul className="sub-menu">
+                <ul className="navSubMenu">
                   <h2>{category.name}</h2>
                   {category.subcategories.map((subCategory, subIndex) =>
                     subCategory.items ? (
@@ -220,21 +219,20 @@ export default function Navigation() {
                     )
                   )}
                 </ul>
-                </div>
               </li>
             ))}
           </ul>
         </li>
 {/*--------------------------------------MAIN-NAVIGATION-LINKS-------------------------------------------------*/}
         {mainNavLinks.map((item, index) => (
-          <li key={index}>
-            <Link className={item.name.toLowerCase().replace(/ /g, "")} to={item.path}>
-              {item.name === "SUPPORT" ? (<i className="fa-solid fa-headset"></i>) : null}
-              {item.name}
-            </Link>
-          </li>
+        <li className="navMenuElements" key={index}>
+          <Link className="navMenuElements2" to={item.path}>
+            {item.name === "SUPPORT" ? (<i className="fa-solid fa-headset"></i>) : null}
+            {item.name}
+          </Link>
+        </li>
         ))}
       </ul>
-    </nav>
+    </div>
   );
 }

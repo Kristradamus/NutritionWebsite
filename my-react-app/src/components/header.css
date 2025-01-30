@@ -1,17 +1,19 @@
   /*-------------------HEADER------------------*/
-.header {
+  .header {
     margin: 0px 200px;
     align-items: center;
     position: relative;
     justify-content: space-between;
   }
   /*-------------------LOGO------------------*/
-  .logo {
+  .headerLogo {
     width: 120px;
     margin: 0 30px;
   }
   /*-------------------SEARCH-BAR------------------*/
-  .search-box {
+  .headerSearchBox {
+    position: relative;
+    display: flex;
     width: max-content;
     align-items: center;
     border-radius: calc(var(--radius) + 15px);
@@ -21,8 +23,11 @@
     cursor: text;
     width: 100%;
     margin: 0;
+    position: relative;
+    transition: box-shadow 0.3s ease;
   }
-  .search-bar {
+  .headerSearchBar {
+    position:relative;
     outline: none;
     background: transparent;
     border: none;
@@ -30,34 +35,34 @@
     margin-left: 15px;
     width: 350px;
   }
-  .search-bar,
+  .headerSearchBar,
   .fa-magnifying-glass {
     font-size: var(--font);
     color: var(--darker);
   }
-  .search-bar::placeholder {
+  .headerSearchBar::placeholder {
     color: var(--darker);
   }
-  .search-bar:focus::placeholder {
+  .headerSearchBar:focus::placeholder {
     transition: var(--transition-a);
     color: transparent;
   }
-  .search-box i{
-    font-size:var(--iconFont);
-    color:var(--green)
-  }
-  .search-box i:hover{
+  .headerSearchBox i{
+    font-size:calc(var(--font) + 5);
+    color:var(--green);
     cursor:pointer;
+  }
+  .headerSearchBox i:hover{
     background-color:var(--dark);;
   }
-  .search-box.expanded{
+  .headerSearchBox.expanded{
     display:absolute;
-    padding-bottom:100px;
+    border-radius: calc(var(--radius) + 5px) calc(var(--radius) + 5px) 0 0;
   }
   /*-------------------FAV-CART-LOG------------------*/
-  .favorites,
-  .cart,
-  .login {
+  .headerFavorites,
+  .headerCart,
+  .headerLogin {
     position: relative;
     font-size:var(--font);
     border-radius: calc(var(--radius) + 15px);
@@ -65,32 +70,28 @@
     display: flex;
     align-items: center;
     margin: 5px;
+    cursor:pointer;
   }
-  .login a,
-  .favorites a,
-  .cart a {
+  .headerLogin a,
+  .headerFavorites a,
+  .headerCart a {
     display: flex;
     align-items: center;
   }
-  .login i,
-  .favorites i,
-  .cart i {
+  .headerLogin i,
+  .headerFavorites i,
+  .headerCart i {
     font-size: var(--iconFont);
     margin-right: 8px;
-  }
-  .favorites:hover,
-  .cart:hover,
-  .login:hover {
-    cursor: pointer;
   }
   .fa-cart-shopping,
   .fa-user,
   .fa-heart {
     color: var(--green);
   }
-  .cart a::after,
-  .favorites a::after,
-  .login a::after {
+  .headerCart a::after,
+  .headerFavorites a::after,
+  .headerLogin a::after {
     width: 75%;
     background: var(--green);
     height: 3px;
@@ -103,12 +104,68 @@
     transform-origin: right;
     transition: transform.3s;
   }
-  .cart a:hover::after,
-  .favorites a:hover::after,
-  .login a:hover::after,
-  .cart a.clicked::after,
-  .favorites a.clicked::after,
-  .login a.clicked::after {
+  .headerCart a:hover::after,
+  .headerFavorites a:hover::after,
+  .headerLogin a:hover::after,
+  .headerCart a.clicked::after,
+  .headerFavorites a.clicked::after,
+  .headerLogin a.clicked::after {
     transform: scaleX(1);
     transform-origin: left;
   }
+/*-------------------SEARCH DROPDOWN------------------*/
+.headerSearchDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background:var(--white);
+  border: 2px solid var(--green);
+  border-radius: 0 0 calc(var(--radius) + 5px) calc(var(--radius) + 5px);
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  box-sizing: border-box;
+  transition: opacity 0.2s ease, transform 0.5s ease, visibility 0s 0.1s;
+}
+
+.headerSearchBox.expanded .headerSearchDropdown {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.headerSearchDropdown li {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.headerSearchDropdown li:hover {
+  background-color: #f5f5f5;
+}
+
+.navDropDownContent{
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  position: absolute;
+  background: var(--light);
+  min-width: 160px;
+  z-index: 1;
+  top: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+}
+.navDropDownContent.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.2s ease, transform 0.5s ease, visibility 0s;
+}
