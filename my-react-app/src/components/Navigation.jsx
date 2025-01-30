@@ -196,7 +196,7 @@ export default function Navigation() {
           <a ref={catToggleRef} className="navCatToggle" href="#" onClick={handleCategoryToggle}>
             <i className="fa-solid fa-bars"></i> CATEGORIES
           </a>
-          <ul ref={dropContentRef} className={`navDropDown ${isDropdownVisible ? "show" : ""}`}>
+          <ul ref={dropContentRef} className={`navDropDownContent ${isDropdownVisible ? "show" : ""}`}>
             {categories.map((category, index) => (
               <li key={index}>
                 <a href={category.link}>{category.name}</a>
@@ -211,8 +211,8 @@ export default function Navigation() {
                             <Link to={item.link}>{item.name}</Link>
                           </li>
                         ))}
-                      </div>
-                    ) : (
+                      </div>) : 
+                    (
                       <li key={subIndex}>
                         <Link to={subCategory.link}>{subCategory.name}</Link>
                       </li>

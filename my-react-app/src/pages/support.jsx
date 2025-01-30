@@ -28,21 +28,18 @@ export default function Support() {
 
   return (
     <div className="support">
-      <div className="sideBar">
-        <ul className="elements">
+      <div className="supportSideBar">
+        <ul className="supportSideElements">
           {Object.keys(data).map((key) => (
-            <li key={key}>
-              <a
-                href="#"
-                onClick={() => handleContentChange(key, data[key])}
-              >
+            <li className="supportSideElement"key={key}>
+              <a href="#" onClick={() => handleContentChange(key, data[key])}>
                 {key}
               </a>
             </li>
           ))}
         </ul>
       </div>
-      <div className="main">
+      <div className="supportMain">
         <h1>{selected.title || "Welcome to Support"}</h1>
         <p>{selected.content || "Select a topic from the sidebar to see more details."}</p>
       </div>

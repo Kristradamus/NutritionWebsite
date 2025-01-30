@@ -10,7 +10,7 @@ export default function Header() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const searchInputRef = useRef(null);
   const searchBoxRef = useRef(null);
-  
+
   const recommendations = [
     "Recommendation1",
     "Recommendation1",
@@ -20,18 +20,15 @@ export default function Header() {
     "Recommendation4",
     "Recommendation2",
   ];
-
   const handleSearchBoxClick = () => {
     setIsSearchExpanded(true);
     setIsDropdownVisible(true);
     searchInputRef.current?.focus();
   };
-
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
     setIsDropdownVisible(e.target.value.length > 0);
   };
-
   const handleKeyDown = (e) => {
     if (e.key === "Escape") {
       setIsSearchExpanded(false);
@@ -39,7 +36,6 @@ export default function Header() {
       setSearchQuery("");
     }
   };
-
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (searchBoxRef.current && !searchBoxRef.current.contains(e.target)) {
@@ -54,18 +50,26 @@ export default function Header() {
 
   return (
     <div className="header">
+      {isSearchExpanded && <div className="dark-overlay" />}
+
       <Link to="/">
         <img className="headerLogo" src={logo} alt="freshBalance" />
       </Link>
 
       <div className={`headerSearchBox ${isSearchExpanded ? "expanded" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
-        <i className="fa-solid fa-magnifying-glass"></i>
-        <input ref={searchInputRef} className="headerSearchBar" placeholder="Search" value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
+        <Link to="/product-page"><i className="fa-solid fa-magnifying-glass"></i></Link>
+        <input
+          ref={searchInputRef}
+          className="headerSearchBar"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+        />
         {isDropdownVisible && (
           <ul className="headerSearchDropdown">
-            {recommendations.filter((item) => item.toLowerCase().includes(searchQuery.toLowerCase()))
-              .map((item, index) => (
-                <li key={index} onClick={() => setSearchQuery(item)}>
+            {recommendations.filter((item) => item.toLowerCase().includes(searchQuery.toLowerCase())).map((item, index) => (
+                <li className="headerRecommendations" key={index} onClick={() => setSearchQuery(item)}>
                   {item}
                 </li>
               ))}

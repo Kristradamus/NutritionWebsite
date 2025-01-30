@@ -1,11 +1,10 @@
-.support {
+  .support{
     display: flex;
     flex-direction: row;
     margin: 0;
     padding: 0;
   }
-  
-  .support .sideBar {
+  .supportSideBar {
     background-color: var(--light);
     max-width: 300px;
     width: 100%;
@@ -13,24 +12,24 @@
     border-right: none;
   }
   
-  .support .main {
+  .supportMain {
     width: 100%;
     border: 1px solid var(--dark);
     border-left: none;
     background-color: var(--white);
   }
   
-  .support .sideBar .elements {
+  .supportSideElements{
     list-style: none;
     margin: 0;
     padding: 0;
   }
   
-  .support .sideBar .elements li {
+  .supportSideElement{
     display: block;
   }
   
-  .support .sideBar .elements li a {
+  .supportSideElement a{
     display: block;
     padding: 10px 20px;
     font-size: var(--font);
@@ -41,7 +40,7 @@
     transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
   }
   
-  .support .sideBar .elements li a:hover {
+  .supportSideElement a:hover{
     cursor: pointer;
     background-color: var(--white);
     border-right: none;

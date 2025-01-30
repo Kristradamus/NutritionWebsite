@@ -29,14 +29,14 @@ export default function LoginRegistration() {
   return (
     <div className="loginRegister">
       <Link to="/">
-        <img className="loginRegisterLogo" src={logo} alt="Fresh Balance" />
+        <img className="logRegLogo" src={logo} alt="Fresh Balance" />
       </Link>
-      <div className="loginRegisterEmailBox">
+      <div className="logRegEmailBox">
         <h1>Hello!</h1>
         <h3>Please enter your email address</h3>
-        <input className={`loginRegisterEmail ${emailError ? "Error" : ""}`} placeholder="Email" value={email} onChange={handleEmailChange}/>
-          {emailError && <p className="login-register_error-message">{emailError}</p>}
-        <button className="emailBoxContinue" onClick={handleContinue}>
+        <input className={`logRegEmail ${emailError ? "Error" : ""}`} placeholder="logRegEmail" value={email} onChange={handleEmailChange}/>
+          {emailError && <p className="logRegErrorMessage">{emailError}</p>}
+        <button className="logRegContinue" onClick={handleContinue}>
           Continue
         </button>
         <h5>
@@ -45,21 +45,21 @@ export default function LoginRegistration() {
         </h5>
         <hr/>
         <h5>You can also login with:</h5>
-        <div className="emailBoxGoogle">
+        <div className="logRegGoogle">
           <i className="fa-brands fa-google"></i>
-          <button>Google</button>
+          <button className="logRegGoogleButt">Google</button>
         </div>
-        <div className="emailBoxFacebook">
+        <div className="logRegFacebook">
           <i className="fa-brands fa-facebook-f"></i>
-          <button>Facebook</button>
+          <button className="logRegFacebookButt">Facebook</button>
         </div>
       </div>
-        <div className="login">
+        <div className="logRegLogin">
 
         </div>
-        <div className="register">
+        <div className="logRegRegister">
         </div>
-        <Link className="needHelp" to="/support">Need help?</Link>
+        <Link className="logRegNeedHelp" to="/support">Need help?</Link>
     </div>
   );
 }
