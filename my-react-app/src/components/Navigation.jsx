@@ -162,7 +162,6 @@ const mainNavLinks = [
 
 export default function Navigation() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-
   const catToggleRef = useRef(null);
   const dropContentRef = useRef(null);
 
@@ -173,12 +172,8 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleOutsideClick = (e) => {
-      if (
-        dropContentRef.current &&
-        !dropContentRef.current.contains(e.target) &&
-        catToggleRef.current &&
-        !catToggleRef.current.contains(e.target)
-      ) {
+      if (dropContentRef.current && !dropContentRef.current.contains(e.target) && catToggleRef.current && !catToggleRef.current.contains(e.target))
+      {
         setIsDropdownVisible(false);
       }
     };
