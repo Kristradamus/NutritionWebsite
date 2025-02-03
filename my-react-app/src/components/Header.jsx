@@ -48,7 +48,7 @@ export default function Header() {
     {
       handleSearchClose(e);
     }
-    else if (e.key === "Enter" && searchQuery.trim() !== "") 
+    else if (e.key === "Enter" && searchQuery.trim(e) !== "") 
     {
       navigate("/product-page");
     }
@@ -80,8 +80,12 @@ export default function Header() {
       </Link>
 {/*--------------------------------SEARCH-BAR-----------------------------------*/}
       <div className={`headerSearchBox ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
-      <Link to="/product-page">
-      <i className="fa-solid fa-magnifying-glass"></i></Link>
+      <i className="fa-solid fa-magnifying-glass" onClick={() => {
+        if (searchQuery.trim() !== "")
+          {
+            navigate("/product-page");
+          }
+      }}></i>
       <input ref={searchInputRef} className="headerSearchBar" placeholder="Search" value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
       <i className={`fa-solid fa-x ${isSearchExpanded ? "clicked" : ""}`} onClick={handleClearSearch}/>
 {/*--------------------------------DROP-DOWN-----------------------------------*/}

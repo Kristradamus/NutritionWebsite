@@ -1,52 +1,102 @@
-  .support{
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-    padding: 0;
+.support {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.supportSearch {
+  margin-bottom: 20px;
+}
+.supportSearch input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.supportContent {
+  display: flex;
+  gap: 20px;
+}
+.supportSideBar {
+  width: 250px;
+}
+.supportSideBar h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+.supportSideElements {
+  list-style: none;
+  padding: 0;
+}
+.supportSideElement {
+  margin-bottom: 10px;
+}
+.supportSideElement a {
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: bold;
+}
+.supportSideElement a:hover {
+  text-decoration: underline;
+}
+.supportMain {
+  flex: 1;
+}
+.supportMain h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+.supportMain p {
+  color: #555;
+  line-height: 1.6;
+}
+.backButton {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.contactButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.contactForm {
+  margin-top: 20px;
+}
+.contactForm label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.contactForm input,
+.contactForm textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.contactForm button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .supportContent {
+    flex-direction: column;
   }
   .supportSideBar {
-    background-color: var(--light);
-    max-width: 300px;
     width: 100%;
-    border: 1px solid var(--dark);
-    border-right: none;
   }
-  
-  .supportMain {
-    width: 100%;
-    border: 1px solid var(--dark);
-    border-left: none;
-    background-color: var(--white);
-  }
-  
-  .supportSideElements{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .supportSideElement{
-    display: block;
-  }
-  
-  .supportSideElement a{
-    display: block;
-    padding: 10px 20px;
-    font-size: var(--font);
-    text-decoration: none;
-    color: var(--dark);
-    background-color: var(--light);
-    border-right: 1px solid var(--dark);
-    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
-  }
-  
-  .supportSideElement a:hover{
-    cursor: pointer;
-    background-color: var(--white);
-    border-right: none;
-    color: var(--green);
-    border-bottom:1px solid var(--dark);
-    border-top:1px solid var(--dark);
-  }
-  
-  
+}

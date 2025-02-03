@@ -23,6 +23,7 @@ export default function LoginRegistration() {
     else 
     {
       setEmailError("");
+
     }
   };
 
@@ -55,7 +56,9 @@ export default function LoginRegistration() {
         </div>
       </div>
         <div className="logRegLogin">
-
+          <h3>Hello <a href="#">username</a>!</h3>
+          <i class="fa-regular fa-user"></i>
+          <input className=
         </div>
         <div className="logRegRegister">
         </div>

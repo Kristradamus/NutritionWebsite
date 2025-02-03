@@ -3,45 +3,139 @@ import "./support.css";
 
 export default function Support() {
   const [selected, setSelected] = useState({ title: "", content: "" });
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showContactForm, setShowContactForm] = useState(false);
 
   const handleContentChange = (title, content) => {
     setSelected({ title, content });
+    setShowContactForm(false);
+  };
+
+  const handleBack = () => {
+    setSelected({ title: "", content: "" });
+    setShowContactForm(false);
   };
 
   const data = {
-    "Can't Log in": "Make sure you’re using the correct email and password. If you’ve forgotten your password, reset it here. Still having trouble? Contact support for assistance.",
-    "Payment issues": "Check if your payment method is up to date and has sufficient funds. For declined transactions, contact your bank or view our payment troubleshooting guide.",
-    "Account Locked": "Your account may be locked for security reasons. Reset your password or contact support to regain access.",
-    "Slow Website Performance": "Clear your browser cache or app data. Make sure you’re using the latest version of the app or browser. If the issue persists, check our system status page for updates.",
-    "Subscription Not Working": "Ensure your subscription is active and payment is successful. You can check this under your account settings. If everything looks fine, reach out to us.",
-    "Missing Orders or Deliveries": "Double-check your order details and tracking number. If your order is delayed or missing, contact the delivery provider or report an issue.",
-    "Unable to Install Software/App": "Ensure your device meets the minimum system requirements. Restart your device and try again. If the problem persists, refer to our installation guide.",
-    "Refund Request Issues": "Make sure your purchase is eligible for a refund based on our policy. You can submit a refund request here.",
-    "Forgot Username or Email": "Try all email addresses you might have used. If you're still unsure, contact support, and we’ll help recover your account.",
-    "App Crashing or Freezing": "Restart the app and update it to the latest version. Clear the app cache or reinstall if needed. For further troubleshooting, check this guide.",
-    "Error Messages": "Note down the error code or message. Check our error message troubleshooting page for a list of fixes.",
-    "Can't Cancel Subscription": "Visit your account settings to manage subscriptions. If you’re unable to cancel, contact us before your next billing date.",
-    "Two-Factor Authentication Issues": "Ensure you have access to your authentication app or backup codes. If you're locked out, reset 2FA settings or contact support.",
-    "Email Not Received": "Check your spam or junk folder. Make sure your email address is correct and that your mailbox isn’t full. Request a resend if needed.",
-    "Account Hacked": "Reset your password immediately and enable two-factor authentication. Review recent activity in your account and report suspicious behavior to our security team.",
+    Account: {
+      "Can't Log in":
+        "If you're unable to log in, double-check that you're entering the correct email address and password. Make sure that Caps Lock is not on, and try resetting your password if needed. If you're still having issues, clear your browser’s cache and cookies, and try logging in again. For further assistance, contact customer support and we’ll help you regain access to your account.",
+      "Forgot Username or Email":
+        "If you've forgotten your username or email address, try checking your previous email accounts for any registration emails. If you're still unsure, contact our support team and provide any possible details you remember. We can help recover your account and assist in retrieving your username or email.",
+      "Account Locked":
+        "If your account is locked, it may be due to suspicious activity or security concerns. To regain access, try resetting your password. If you're unable to unlock your account, reach out to customer support for assistance. They will help you verify your identity and secure your account as soon as possible.",
+    },
+    Billing: {
+      "Payment issues":
+        "If you're encountering payment issues, first ensure that your payment details are up-to-date and that your payment method has sufficient funds. Check if there are any issues with your bank or payment provider. If a payment is declined, contact your bank to resolve the issue. Additionally, you can visit our payment troubleshooting guide for step-by-step instructions on how to fix common payment problems.",
+      "Subscription Not Working":
+        "If your subscription is not working, ensure that your subscription is active and that your payment has been successfully processed. You can verify the status of your subscription in your account settings. If everything appears correct but the issue continues, please reach out to our support team for further assistance.",
+      "Refund Request Issues":
+        "If you're having trouble submitting a refund request, make sure that your purchase is eligible according to our refund policy. You can review the conditions under which refunds are granted on our website. If you're still uncertain or need further help, reach out to our support team and they’ll guide you through the refund process.",
+    },
+    Technical: {
+      "Slow Website Performance":
+        "If you're experiencing slow website performance, try clearing your browser's cache and app data. Make sure you're using the latest version of your browser or app, as outdated versions can affect performance. If the issue persists, check our system status page to see if there are any ongoing issues affecting website speed.",
+      "Unable to Install Software/App":
+        "If you're unable to install our software or app, ensure that your device meets the minimum system requirements. Restart your device and try again, as some issues may be resolved by a simple reboot. If installation fails, consult our installation guide for additional troubleshooting tips or contact support for further assistance.",
+      "App Crashing or Freezing":
+        "If the app is crashing or freezing, try restarting your app and ensure you have the latest version installed. Sometimes clearing the app’s cache or reinstalling it can fix persistent issues. If the problem continues, refer to our troubleshooting guide or contact support for more advanced troubleshooting options.",
+      "Error Messages":
+        "If you encounter an error message, note down the error code and message displayed. Check our error message troubleshooting page for a list of common errors and their solutions. If you're unable to resolve the issue using the guide, contact support and provide the error details so we can assist you more efficiently.",
+    },
+    Security: {
+      "Two-Factor Authentication Issues":
+        "If you're experiencing issues with two-factor authentication (2FA), ensure that you have access to the authentication app or backup codes. If you've lost access to the authentication method, you may need to reset your 2FA settings. If you’re unable to do this on your own, contact customer support, and we'll assist you in recovering access to your account.",
+      "Account Hacked":
+        "If you suspect that your account has been hacked, reset your password immediately to secure your account. Enable two-factor authentication (2FA) for extra protection. Review any recent account activity for signs of unauthorized access, and report suspicious behavior to our security team. We will investigate and help you regain control of your account.",
+    },
+    Orders: {
+      "Missing Orders or Deliveries":
+        "In case your order is missing or delayed, first confirm the details of your order, including the tracking number. Check with the delivery provider for updates. If the delivery is significantly delayed or missing, report the issue to our customer support team and they will assist in resolving the matter with the provider.",
+    },
+    Email: {
+      "Email Not Received":
+        "If you're not receiving your emails, check your spam or junk folder, as the email may have been filtered incorrectly. Verify that your email address is correct and that your mailbox isn't full. If you still haven't received the email, try requesting a resend. If the issue persists, contact support and we'll investigate further.",
+    },
+    Subscriptions: {
+      "Can't Cancel Subscription":
+        "If you're having trouble canceling your subscription, first make sure you're signed into the correct account. Go to your account settings and find the subscription management section. If you’re still unable to cancel, contact our support team as soon as possible to prevent further charges, especially before your next billing cycle.",
+    },
   };
+
+  const filteredData = Object.keys(data).reduce((acc, category) => {
+    const filteredTopics = Object.keys(data[category]).filter((key) =>
+      key.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    if (filteredTopics.length > 0) {
+      acc[category] = filteredTopics.reduce((obj, key) => {
+        obj[key] = data[category][key];
+        return obj;
+      }, {});
+    }
+    return acc;
+  }, {});
 
   return (
     <div className="support">
-      <div className="supportSideBar">
-        <ul className="supportSideElements">
-          {Object.keys(data).map((key) => (
-            <li className="supportSideElement"key={key}>
-              <a href="#" onClick={() => handleContentChange(key, data[key])}>
-                {key}
-              </a>
-            </li>
-          ))}
-        </ul>
+
+      <div className="supportSearch">
+        <input
+          type="text"
+          placeholder="Search for help..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
       </div>
-      <div className="supportMain">
-        <h1>{selected.title || "Welcome to Support"}</h1>
-        <p>{selected.content || "Select a topic from the sidebar to see more details."}</p>
+
+      <div className="supportContent">
+
+        <div className="supportSideBar">
+          {Object.keys(filteredData).map((category) => (
+            <div key={category}>
+              <h3>{category}</h3>
+              <ul className="supportSideElements">
+                {Object.keys(filteredData[category]).map((key) => (
+                  <li className="supportSideElement" key={key}>
+                    <a href="#" onClick={() => handleContentChange(key, filteredData[category][key])}>
+                      {key}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="supportMain">
+          {selected.title && (
+            <button className="backButton" onClick={handleBack}>
+              Back to Support
+            </button>
+          )}
+          <h1>{selected.title || "Welcome to Support"}</h1>
+          <p>{selected.content || "Select a topic from the sidebar to see more details."}</p>
+
+          {!selected.title && (
+            <button className="contactButton" onClick={() => setShowContactForm(true)}>
+              Contact Support
+            </button>
+          )}
+          {showContactForm && (
+            <div className="contactForm">
+              <h2>Contact Support</h2>
+              <form>
+                <label htmlFor="name">Name:</label>
+                <input type="text" id="name" name="name" required />
+                <label htmlFor="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+                <label htmlFor="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
