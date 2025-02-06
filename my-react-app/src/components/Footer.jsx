@@ -4,18 +4,18 @@ import React,{useState, useRef, useEffect} from "react";
 import logo from "../images/freshBalance.png"
 
 export default function Footer(){
-    const links = [
+    const footerLinks = [
         {name:"Home",link:"/"},
         {name:"About us",link:"/about-us"},
         {name:"Services",link:"/services"},
         {name:"Subscriptions",link:"/subscriptions"},
-        {name:"Communities",link:"/comunities"},
+        {name:"Communities",link:"/communities"},
         {name:"Support",link:"/support"},
         {name:"Login",link:"/login"},
         {name:"Favourites",link:"/favourites"},
         {name:"Cart",link:"/cart"},
     ]
-const icons = {
+const footerIcons = {
     Home:"fa-solid fa-house",
     Services:"fa-solid fa-location-dot",
     Subscriptions:"fa-solid fa-dollar-sign",
@@ -30,10 +30,10 @@ const icons = {
         <div className="footerTop">
             <div className="footerNavBox">
                 <ul className="footerNav">
-                {links.map((item, itemIndex) => (
+                {footerLinks.map((item, itemIndex) => (
                     <li key={itemIndex}>
                         <Link to={item.link}>
-                        {icons[item.name] && <i className={icons[item.name]}></i>}
+                        {footerIcons[item.name] && <i className={footerIcons[item.name]}></i>}
                         {item.name}
                         </Link>
                     </li>

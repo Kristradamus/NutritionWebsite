@@ -4,7 +4,7 @@ import logo from "../images/freshBalance.png";
 import { Link } from 'react-router-dom';
 
 export default function LoginRegistration() {
-  const [email, setEmail] = useState("");
+  {/*}/const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
 
   const validateEmail = (email) => {
@@ -65,4 +65,4 @@ export default function LoginRegistration() {
         <Link className="logRegNeedHelp" to="/support">Need help?</Link>
     </div>
   );
-}
+}*/}}

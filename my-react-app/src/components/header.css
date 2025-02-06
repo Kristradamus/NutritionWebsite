@@ -11,30 +11,35 @@
   margin: 0 30px;
 }
 /*-------------------FAV-CART-LOG------------------*/
-.FavCartLog{
-  display:flex;
-  margin:0;
-  padding:0;
-  flex-direction:row;
+.FavCartLog {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
 }
-.FavCartLog div{
+
+.FavCartLog li {
   position: relative;
-  font-size:var(--font);
+  font-size: var(--font);
   padding: 15px 20px;
-  margin:5px;
+  margin: 5px;
   align-items: center;
-  cursor:pointer;
+  cursor: pointer;
 }
+
 .FavCartLog a {
   align-items: center;
   color: var(--darker);
+  display: flex;
 }
+
 .FavCartLog i {
   font-size: var(--iconFont);
-  margin-right: 8px;
+  margin-right: var(--iconDistance);
   color: var(--green);
 }
-.FavCartLog div::after { 
+
+.FavCartLog li::after {
   width: 75%;
   background-color: var(--green);
   height: 3px;
@@ -47,11 +52,13 @@
   transform-origin: right;
   transition: transform 0.3s ease;
 }
-.FavCartLog div:hover::after,
-.FavCartLog div.active::after {
+
+.FavCartLog li:hover::after,
+.FavCartLog li.active::after {
   transform: scaleX(1);
   transform-origin: left;
 }
+
 /*---------------------SEARCH-BAR----------------------*/
 .headerSearchBox {
   position: relative;
@@ -63,7 +70,7 @@
   padding: 10px 20px;
   cursor: text;
   width: 100%;
-  z-index: 2;
+  z-index: 10;
   transition: all 0.3s ease;
 }
 .headerSearchBox.clicked{
@@ -112,7 +119,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  z-index: 5;
   pointer-events: none;
   opacity: 0;
   transition: 0.3s ease;
@@ -143,7 +150,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  z-index: 5;
+  z-index: 10;
   visibility: hidden;
   opacity: 0;
   transform: translateY(-10px);

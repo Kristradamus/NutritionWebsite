@@ -27,7 +27,7 @@
 }
 .footerNav li i{
     color:var(--green);
-    margin-right:8px;
+    margin-right:var(--iconDistance);
 }
 .footerNav li::after{
     width:100%;
@@ -56,5 +56,5 @@
     font-size:var(--font);
 }
 .footerBottom .fa-copyright{
-    margin-right:5px;
+    margin-right:var(--iconDistance);
 }

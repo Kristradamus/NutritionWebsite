@@ -32,7 +32,7 @@ export default function App() {
               <Route path="/cart" element={<Cart />} />
               <Route path="/favourites" element={<Favourites />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/product-page/:promotionName" element={<ProductPage />} />
+              <Route path="/product-page/:promotionName" element={<ProductPage />}/>
             </Route>
             <Route path="/login" element={<LoginRegistration />} />
           </Routes>

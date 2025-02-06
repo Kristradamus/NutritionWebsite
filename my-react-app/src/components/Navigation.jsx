@@ -152,13 +152,19 @@ const categories = [
   },
 ];
 
-const mainNavLinks = [
+const navNavLinks = [
   { name: "ABOUT US", path: "/about-us" },
   { name: "SERVICES", path: "/services" },
   { name: "SUBSCRIPTIONS", path: "/subscriptions" },
   { name: "COMMUNITIES", path: "/communities" },
   { name: "SUPPORT", path: "/support" },
 ];
+const navIcons = {
+  SERVICES:"fa-solid fa-location-dot",
+  SUBSCRIPTIONS:"fa-solid fa-dollar-sign",
+  COMMUNITIES:"fa-regular fa-comment",
+  SUPPORT:"fa-solid fa-headset",
+}
 
 export default function Navigation() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -219,10 +225,10 @@ export default function Navigation() {
           </ul>
         </li>
 {/*--------------------------------------MAIN-NAVIGATION-LINKS-------------------------------------------------*/}
-        {mainNavLinks.map((item, index) => (
+        {navNavLinks.map((item, index) => (
         <li className="navMenuElements" key={index}>
           <Link className="navMenuElements2" to={item.path}>
-            {item.name === "SUPPORT" ? (<i className="fa-solid fa-headset"></i>) : null}
+            {navIcons[item.name] && <i className={navIcons[item.name]}></i>}
             {item.name}
           </Link>
         </li>

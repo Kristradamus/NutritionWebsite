@@ -13,7 +13,8 @@ export default function Header() {
   const searchBoxRef = useRef(null);
   const location = useLocation();
 
-  const recommendations = [
+{/*--------------------------------ARRAYS-----------------------------------*/}
+  const headerRecommendations = [
     "Recommendation1",
     "Recommendation1",
     "Recommendation2",
@@ -22,15 +23,18 @@ export default function Header() {
     "Recommendation4",
     "Recommendation2",
   ];
-
-{/*--------------------------------FAV-CART-LOG-----------------------------------*/}
-  const handleFavCartLogClick = (path, item) => {
-    navigate(path);
+  const headerNav = [
+    { name: "Login", link: "/login" },
+    { name: "Favourites", link: "/favourites" },
+    { name: "Cart", link: "/cart" },
+  ];
+  const headerIcons = {
+    Login: "fa-solid fa-user",
+    Favourites: "fa-solid fa-heart",
+    Cart: "fa-solid fa-cart-shopping",
   };
-{/*--------------------------------SEARCH-BAR-----------------------------------*/}
-  const hasReccomendation = () => {
-    
-  }
+
+  {/*--------------------------------SEARCH-BAR-----------------------------------*/}
   const handleSearchBoxClick = () => {
     setIsSearchExpanded(true);
     setIsDropdownVisible(true);
@@ -45,25 +49,17 @@ export default function Header() {
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
     setIsDropdownVisible(e.target.value.length > 0);
-    if(!setIsDropdownVisible){
-
-    }
   };
   const handleKeyDown = (e) => {
-    if (e.key === "Escape") 
-    {
+    if (e.key === "Escape") {
       handleSearchClose(e);
-    }
-    else if (e.key === "Enter" && searchQuery.trim(e) !== "") 
-    {
-      navigate("/product-page");
+    } else if (e.key === "Enter" && searchQuery.trim(e) !== "") {
+      navigate(`/product-page/${e.toLowerCase()}`);
     }
   };
-
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (searchBoxRef.current && !searchBoxRef.current.contains(e.target)) 
-      {
+      if (searchBoxRef.current && !searchBoxRef.current.contains(e.target)) {
         setIsDropdownVisible(false);
         setIsSearchExpanded(false);
       }
@@ -72,55 +68,62 @@ export default function Header() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  });
-
+  }, []);
   const handleClearSearch = () => {
     setSearchQuery("");
   };
 
   return (
     <div className="header">
-    <div className={`headerDarkOverlay ${isSearchExpanded ? "clicked" : ""}`}/>
+      <div className={`headerDarkOverlay ${isSearchExpanded ? "clicked" : ""}`} />
       <Link to="/">
         <img className="headerLogo" src={logo} alt="freshBalance" />
       </Link>
-{/*--------------------------------SEARCH-BAR-----------------------------------*/}
+      {/*--------------------------------SEARCH-BAR-----------------------------------*/}
       <div className={`headerSearchBox ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
-      <i className="fa-solid fa-magnifying-glass" onClick={() => {
-        if (searchQuery.trim() !== "")
-          {
-            navigate("/product-page");
-          }
-      }}></i>
-      <input ref={searchInputRef} className="headerSearchBar" placeholder="Search" value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
-      <i className={`fa-solid fa-x ${isSearchExpanded ? "clicked" : ""}`} onClick={handleClearSearch}/>
-{/*--------------------------------DROP-DOWN-----------------------------------*/}
+        <i className="fa-solid fa-magnifying-glass" onClick={() => {
+          const trimmedQuery = searchQuery.trim().toLowerCase();
+          if (trimmedQuery !== "") 
+            {
+              navigate(`/product-page/${trimmedQuery}`);
+            }
+          }}
+        ></i>
+        <input
+          ref={searchInputRef}
+          className="headerSearchBar"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+        />
+        <i
+          className={`fa-solid fa-x ${isSearchExpanded ? "clicked" : ""}`}
+          onClick={handleClearSearch}
+        />
+        {/*--------------------------------DROP-DOWN-----------------------------------*/}
         <ul className="headerSearchDropdown">
-          {recommendations.filter((item) => item.toLowerCase().includes(searchQuery.toLowerCase())).map((item, index) => (
-            <li className="headerRecommendations" key={index} onClick={() => setSearchQuery(item)}>
-              {item}
-            </li>
-          ))}
+          {headerRecommendations.filter((item) => item.toLowerCase().includes(searchQuery.toLowerCase())).map((item, index) => (
+              <li className="headerRecommendations" key={index} onClick={() => {setSearchQuery(item); navigate(`/product-page/${item.toLowerCase()}`)}}>
+                {item}
+              </li>
+            ))}
         </ul>
       </div>
-{/*--------------------------------FAV-CART-LOG-----------------------------------*/}
-      <div className="FavCartLog">
-      <div className={`headerLogin ${location.pathname === "/login" ? "active" : ""}`} onClick={() => handleFavCartLogClick("/login")}>
-        <Link to="/login">
-          <i className="fa-solid fa-user"></i>Login
-        </Link>
-      </div>
-      <div className={`headerFavourites ${location.pathname === "/favourites" ? "active" : ""}`} onClick={() => handleFavCartLogClick("/favourites")}>
-        <Link to="/favourites">
-          <i className="fa-solid fa-heart"></i>Favorites
-        </Link>
-      </div>
-      <div className={`headerCart ${location.pathname === "/cart" ? "active" : ""}`} onClick={() => handleFavCartLogClick("/cart")}>
-        <Link to="/cart">
-          <i className="fa-solid fa-cart-shopping"></i>Cart
-        </Link>
-       </div>
-      </div>
+      {/*--------------------------------FAV-CART-LOG-----------------------------------*/}
+      <ul className="FavCartLog">
+        {headerNav.map((item, index) => (
+          <li
+            key={index}
+            className={location.pathname === item.link ? "active" : ""}
+          >
+            <Link to={item.link}>
+              {headerIcons[item.name] && <i className={headerIcons[item.name]}></i>}
+              {item.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

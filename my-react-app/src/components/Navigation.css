@@ -1,17 +1,19 @@
 /*-----------------------------------------NAVIGATION-----------------------------------------------*/
 .navigation {
-  background: var(--green);
+  background-color: var(--green);
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
-.fa-bars, .fa-headset {
-  margin-right: 8px;
+  box-shadow:var(--boxShadowBottom);
+  z-index:4;
 }
 .navMenu {
   background: var(--green);
   margin: 0px 150px;
   display: flex;
+}
+.navMenu li i{
+  margin-right:var(--iconDistance);
 }
 .navCatToggle, .navMenuElements2 {
   font-size: var(--font);
@@ -39,7 +41,7 @@
   position: absolute;
   background: var(--light);
   min-width: 160px;
-  z-index: 1;
+  z-index: 5;
   top: 100%;
   margin: 0;
   padding: 0;
@@ -94,7 +96,7 @@
   align-items: center;
 }
 .navDropDown i {
-  margin-left: 5px;
+  margin-left: var(--iconDistance);
 }
 /*-------------------------------------------SUB-MENU--------------------------------------------*/
 .navSubMenu {
@@ -106,7 +108,7 @@
   top: 0;
   background: var(--white);
   min-width: 1000px;
-  z-index: 999;
+  z-index: 4;
   height: 100%;
   display: none;
   columns: 3;
