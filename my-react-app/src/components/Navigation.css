@@ -24,7 +24,7 @@
 }
 .navCatToggle:hover, .navMenuElements2:hover {
   transition: var(--transition-a);
-  border: 1px solid var(--lightGreen);
+  border: 1px solid var(--white);
 }
 /*----------------------------------DROPDOWN-MENU--------------------------------------------*/
 .navDropDown {
@@ -47,7 +47,7 @@
   border: 1px solid var(--dark);
   border-right:none;
   box-sizing: border-box;
-  box-shadow: 0 0 20px rgb(0, 0, 3, 0.2);
+  box-shadow:var(--boxShadow);
   transition: opacity 0.2s ease, transform 0.5s ease, visibility 0s 0.1s;
 }
 .navDropDownContent.show {

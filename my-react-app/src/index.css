@@ -5,8 +5,8 @@
     box-sizing: border-box;
   }
   :root {
-    --green: rgb(44, 155, 58);
-    --lightGreen: #f2fff4;
+    --green: #2e8b57;
+    --lightGreen: #45bb57;
     --white: white;
     --light: #f9f9f9;
     --darker: rgb(73, 73, 73);
@@ -17,6 +17,7 @@
     --radius:15px;
     --font:15px;
     --transition-a: 0.3s;
+    --boxShadow: 0 0 20px rgb(0, 0, 3, 0.2);
   }
   body {
     background: var(--white);

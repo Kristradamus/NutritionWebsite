@@ -36,7 +36,7 @@
 }
 .FavCartLog div::after { 
   width: 75%;
-  background: var(--green);
+  background-color: var(--green);
   height: 3px;
   content: "";
   position: absolute;
@@ -66,9 +66,9 @@
   z-index: 2;
   transition: all 0.3s ease;
 }
-.headerSearchBox.clicked {
+.headerSearchBox.clicked{
   border-radius: calc(var(--radius) + 7px) calc(var(--radius) + 7px) 0 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow:var(--boxShadow);
 }
 .headerSearchBox i {
   font-size: calc(var(--font) + 5px);

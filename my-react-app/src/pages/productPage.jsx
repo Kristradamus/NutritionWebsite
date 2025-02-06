@@ -7,9 +7,8 @@ export default function ProductPage() {
   const query = searchParams.get("query") || "";
 
   return (
-    <div>
+    <div className="productPage">
       <h1>Search Results for: {query}</h1>
-      {/* Display search results here */}
     </div>
   );
 };

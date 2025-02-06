@@ -28,6 +28,9 @@ export default function Header() {
     navigate(path);
   };
 {/*--------------------------------SEARCH-BAR-----------------------------------*/}
+  const hasReccomendation = () => {
+    
+  }
   const handleSearchBoxClick = () => {
     setIsSearchExpanded(true);
     setIsDropdownVisible(true);
@@ -42,6 +45,9 @@ export default function Header() {
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
     setIsDropdownVisible(e.target.value.length > 0);
+    if(!setIsDropdownVisible){
+
+    }
   };
   const handleKeyDown = (e) => {
     if (e.key === "Escape") 

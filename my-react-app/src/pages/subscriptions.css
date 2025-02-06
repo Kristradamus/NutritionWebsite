@@ -1,0 +1,31 @@
+.subscriptions{
+    margin:0px;
+    padding:0px;
+    display:flex;
+    flex-direction:column;
+}
+.subCategories{
+    display:flex;
+    flex-direction:row;
+    margin:30px 30px;
+    padding:0;
+}
+.subCategories div{
+    border-radius:var(--radius);
+    background-color:var(--white);
+    width:100%;
+    max-width:400px;
+    height:100%;
+}
+.subcategories{
+    font-size: var(--font);
+    color:var(--green);
+}
+.subPrice{
+    display:flex;
+    flex-direction:row;
+}
+.subSidePrice{
+    display:flex;
+    flex-direction:column;
+}

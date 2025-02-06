@@ -78,7 +78,6 @@ export default function Support() {
 
   return (
     <div className="support">
-
       <div className="supportSearch">
         <input
           type="text"
@@ -87,7 +86,6 @@ export default function Support() {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
-
       <div className="supportContent">
 
         <div className="supportSideBar">
