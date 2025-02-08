@@ -13,15 +13,12 @@ export default function Header() {
   const searchBoxRef = useRef(null);
   const location = useLocation();
 
-{/*--------------------------------ARRAYS-----------------------------------*/}
+{/*--------------------------------RECOMMENDATIONS-LINKS-ICONS-----------------------------------*/}
   const headerRecommendations = [
-    "Recommendation1",
     "Recommendation1",
     "Recommendation2",
     "Recommendation3",
     "Recommendation4",
-    "Recommendation4",
-    "Recommendation2",
   ];
   const headerNav = [
     { name: "Login", link: "/login" },
@@ -34,7 +31,10 @@ export default function Header() {
     Cart: "fa-solid fa-cart-shopping",
   };
 
-  {/*--------------------------------SEARCH-BAR-----------------------------------*/}
+{/*--------------------------------SEARCH-BAR-----------------------------------*/}
+  const handleFavCartLogClick = (item) => {
+    navigate(item.link)
+  }
   const handleSearchBoxClick = () => {
     setIsSearchExpanded(true);
     setIsDropdownVisible(true);
@@ -72,6 +72,9 @@ export default function Header() {
   const handleClearSearch = () => {
     setSearchQuery("");
   };
+  const filteredRecommendations = searchQuery ? [searchQuery,...headerRecommendations.filter(item =>
+      item.toLowerCase().includes(searchQuery.toLowerCase()) && item.toLowerCase() !== searchQuery.toLowerCase())]
+  : headerRecommendations;
 
   return (
     <div className="header">
@@ -81,29 +84,20 @@ export default function Header() {
       </Link>
       {/*--------------------------------SEARCH-BAR-----------------------------------*/}
       <div className={`headerSearchBox ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
+        <div className={`headerSearchBox2 ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
         <i className="fa-solid fa-magnifying-glass" onClick={() => {
           const trimmedQuery = searchQuery.trim().toLowerCase();
           if (trimmedQuery !== "") 
             {
               navigate(`/product-page/${trimmedQuery}`);
             }
-          }}
-        ></i>
-        <input
-          ref={searchInputRef}
-          className="headerSearchBar"
-          placeholder="Search"
-          value={searchQuery}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
-        />
-        <i
-          className={`fa-solid fa-x ${isSearchExpanded ? "clicked" : ""}`}
-          onClick={handleClearSearch}
-        />
+          }}></i>
+        <input ref={searchInputRef} className="headerSearchBar" placeholder="Search..." value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
+        <i className={`fa-solid fa-x ${isSearchExpanded ? "clicked" : ""}`} onClick={handleClearSearch}/>
+        </div>
         {/*--------------------------------DROP-DOWN-----------------------------------*/}
         <ul className="headerSearchDropdown">
-          {headerRecommendations.filter((item) => item.toLowerCase().includes(searchQuery.toLowerCase())).map((item, index) => (
+          {filteredRecommendations.map((item, index) => (
               <li className="headerRecommendations" key={index} onClick={() => {setSearchQuery(item); navigate(`/product-page/${item.toLowerCase()}`)}}>
                 {item}
               </li>
@@ -111,12 +105,9 @@ export default function Header() {
         </ul>
       </div>
       {/*--------------------------------FAV-CART-LOG-----------------------------------*/}
-      <ul className="FavCartLog">
+      <ul className="headerFavCartLog">
         {headerNav.map((item, index) => (
-          <li
-            key={index}
-            className={location.pathname === item.link ? "active" : ""}
-          >
+          <li key={index} className={`headerNavElement ${location.pathname === item.link ? "active" : ""}`} onClick={() => handleFavCartLogClick(item)}>
             <Link to={item.link}>
               {headerIcons[item.name] && <i className={headerIcons[item.name]}></i>}
               {item.name}

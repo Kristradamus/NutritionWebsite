@@ -1,20 +1,25 @@
 import "./Footer.css";
 import {Link} from "react-router-dom";
 import React,{useState, useRef, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../images/freshBalance.png"
 
+
 export default function Footer(){
-    const footerLinks = [
-        {name:"Home",link:"/"},
-        {name:"About us",link:"/about-us"},
-        {name:"Services",link:"/services"},
-        {name:"Subscriptions",link:"/subscriptions"},
-        {name:"Communities",link:"/communities"},
-        {name:"Support",link:"/support"},
-        {name:"Login",link:"/login"},
-        {name:"Favourites",link:"/favourites"},
-        {name:"Cart",link:"/cart"},
-    ]
+    const navigate = useNavigate();
+
+{/*--------------------------------------LINKS-ICONS----------------------------------------*/}
+const footerLinks = [
+    {name:"Home",link:"/"},
+    {name:"About us",link:"/about-us"},
+    {name:"Services",link:"/services"},
+    {name:"Subscriptions",link:"/subscriptions"},
+    {name:"Communities",link:"/communities"},
+    {name:"Support",link:"/support"},
+    {name:"Login",link:"/login"},
+    {name:"Favourites",link:"/favourites"},
+    {name:"Cart",link:"/cart"},
+]
 const footerIcons = {
     Home:"fa-solid fa-house",
     Services:"fa-solid fa-location-dot",
@@ -25,13 +30,17 @@ const footerIcons = {
     Favourites:"fa-solid fa-heart",
     Cart:"fa-solid fa-cart-shopping",
 }
-    return (
+const handleFooterNavClick = (item) => {
+    navigate(item.link);
+}
+return (
     <div className="footer">
+{/*-----------------------------------------------FOOTER-TOP--------------------------------------------*/}
         <div className="footerTop">
             <div className="footerNavBox">
                 <ul className="footerNav">
                 {footerLinks.map((item, itemIndex) => (
-                    <li key={itemIndex}>
+                    <li key={itemIndex} onClick={() => handleFooterNavClick(item)}>
                         <Link to={item.link}>
                         {footerIcons[item.name] && <i className={footerIcons[item.name]}></i>}
                         {item.name}
@@ -41,6 +50,7 @@ const footerIcons = {
                 </ul>
             </div>
         </div>
+{/*-----------------------------------------------FOOTER-BOTTOM--------------------------------------------*/}
         <div className="footerBottom">
             <p><i className="fa-regular fa-copyright"></i>2025 FreshBalance. All Rights Reserved.</p>
         </div>
