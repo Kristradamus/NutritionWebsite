@@ -83,7 +83,7 @@ export default function Header() {
         <img className="headerLogo" src={logo} alt="freshBalance" />
       </Link>
       {/*--------------------------------SEARCH-BAR-----------------------------------*/}
-      <div className={`headerSearchBox ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
+      <div className="headerSearchBox" onClick={handleSearchBoxClick} ref={searchBoxRef}>
         <div className={`headerSearchBox2 ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
         <i className="fa-solid fa-magnifying-glass" onClick={() => {
           const trimmedQuery = searchQuery.trim().toLowerCase();

@@ -10,11 +10,14 @@
   background: var(--green);
   margin: 0px calc(10vw + 20px);
   display: flex;
+  flex-direction:row;
 }
 .navMenu li i{
   margin-right:var(--iconDistance);
 }
-.navCatToggle, .navMenuElement a {
+.navCatToggle,
+.navMoreToggle,
+.navMenuElement a{
   font-size: var(--font);
   margin: 5px 10px;
   color: var(--white);
@@ -25,6 +28,8 @@
 }
 .navCatToggle:hover,
 .navCatToggle.active,
+.navMoreToggle:hover,
+.navMoreToggle.active,
 .navMenuElement a:hover,
 .navMenuElement a.active{
   transition: var(--transition-a);
@@ -77,33 +82,22 @@
   box-sizing: border-box;
   transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
-.navDropDownContent li a:hover {
+.navDropDownContent li a:hover{
   border-top: 1px solid var(--dark);
   border-bottom: 1px solid var(--dark);
   border-right:transparent;
   color: var(--green);
   background-color: var(--white);
 }
-.navDropDownContent li:last-child a {
-  border-bottom: none;
-}
-.navDropDownContent li:first-child a {
-  border-top: none;
-}
-.navDropDown:hover .navDropDown {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
-}
-.navDropDown a {
-  display: flex;
-  align-items: center;
-}
 .navDropDown i {
   margin-left: var(--iconDistance);
 }
-
+.navDropDownContent li:last-child a{
+  border-bottom: none;
+}
+.navDropDownContent li:first-child a{
+  border-top: none;
+}
 /*-------------------------------------------SUB-MENU--------------------------------------------*/
 .navSubMenu {
   padding:0;
@@ -153,77 +147,80 @@
   color: var(--green);
 }
 /*-------------------------------------------MORE-DROP-DOWN-MENU--------------------------------------------*/
-.navDropDownMore {
+.navMore {
   display: none;
-  flex-direction: column;
+  position: relative;
+  margin-left:10px;
+}
+.navDropDownMore {
+  display:flex;
+  flex-direction:column;
   position: absolute;
   top: 100%;
-  left: 0;
   background: var(--light);
-  min-width: 160px;
+  width:100%;
   z-index: 5;
   border: 1px solid var(--dark);
-  border-right: none;
-  box-sizing: border-box;
   box-shadow: var(--boxShadow);
+  opacity:0;
+  visibility:hidden;
+  transform: translateY(-10px);
   transition: opacity 0.2s ease, transform 0.5s ease, visibility 0s 0.1s;
 }
-.navDropDownMore.show {
-  display: block;
-  visibility: visible;
-  opacity: 1;
+.navDropDownMore.show,
+.navMore:hover .navDropDownMore{
+  opacity:1;
+  visibility:visible;
   transform: translateY(0);
   transition: opacity 0.2s ease, transform 0.5s ease, visibility 0s;
 }
-.navMore {
-  position: relative;
+.navDropDownMore li a{
+  border:1px solid transparent;
 }
 .navDropDownMore li a {
-  color: var(--green);
-}
-.navDropDownMore li i {
-  margin-right: var(--iconDistance);
-}
-.navDropDownMore li a {
-  border-right: 1px solid var(--dark);
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-  padding: 10px 20px;
-  font: var(--font);
-  margin: 0;
   color: var(--darker);
-  display: block;
+  padding: 10px;
+  font-size:var(--font);
   text-decoration: none;
-  box-sizing: border-box;
-  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+  transition: color 0.2s ease;
 }
 .navDropDownMore li a:hover {
+  background: var(--white);
+  color: var(--green);
+}
+.navDropDownMore li a:hover{
   border-top: 1px solid var(--dark);
   border-bottom: 1px solid var(--dark);
-  border-right: transparent;
   color: var(--green);
   background-color: var(--white);
 }
-.navDropDownMore li:last-child a {
+.navDropDownMore li:last-child a
+{
   border-bottom: none;
 }
 .navDropDownMore li:first-child a {
   border-top: none;
 }
 /*-------------------------------------------RESPONSIVE--------------------------------------------*/
-@media (max-width: 1300px) {
+@media (max-width: 1350px) {
   .navMenu {
     margin: 0 calc(5vw + 10px);
   }
-  .navMenuElement:nth-last-child(2) {
-    display: none;
+  .navMenu li{
+    position:center;
+    align-items:center;
   }
   .navMore {
-    display: contents;
+    display: block;
   }
-  .navSubMenu {
-    columns: 2;
-    width: 50vw;
+  .navMenuElement:nth-last-child(1) {
+    display: none;
+  }
+  .navSubMenu h2 {
+    font-size: calc(var(--font) + 5px);
+  }
+  .navSubMenu h3 {
+    font-size: calc(var(--font) + 2.5px);
   }
 }
 @media (max-width: 1200px) {
@@ -246,21 +243,11 @@
     display: none;
   }
 }
-
 @media (max-width: 780px) {
   .navMenuElement {
-    display:none;
+    display: none;
   }
   .navMenu {
     margin: 0 20px;
-  }
-  .navSubMenu {
-    columns: 1;
-  }
-  .navSubMenu h2 {
-    font-size: calc(var(--font) + 5px);
-  }
-  .navSubMenu h3 {
-    font-size: calc(var(--font) + 2.5px);
   }
 }
