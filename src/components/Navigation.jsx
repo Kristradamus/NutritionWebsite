@@ -4,9 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 
 
 export default function Navigation() {
-  const [isDropDownVisible, setIsDropDownVisible] = useState(false);
-  const [isDropDownMoreVisible, setIsDropDownMoreVisible] = useState(false);
-  const [hiddenItems, setHiddenItems] = useState([]);
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [isDropdownMoreVisible, setIsDropdownMoreVisible] = useState(false);
   const catToggleRef = useRef(null);
   const moreToggleRef = useRef(null);
   const dropContentRef = useRef(null);
@@ -180,51 +179,34 @@ export default function Navigation() {
   const handleCategoryToggle = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsDropDownVisible((prev) => !prev);
-    setIsDropDownMoreVisible(false);
+    setIsDropdownVisible((prev) => !prev);
+    setIsDropdownMoreVisible(false);
   };
   const handleMoreToggle = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsDropDownMoreVisible((prev) => !prev);
-    setIsDropDownVisible(false);
+    setIsDropdownMoreVisible((prev) => !prev);
+    setIsDropdownVisible(false);
   };
   useEffect(() => {
     const handleOutsideClick = (e) => {
       if ((dropContentRef.current && !dropContentRef.current.contains(e.target) && catToggleRef.current && !catToggleRef.current.contains(e.target)) ||
       (moreDropContentRef.current && !moreDropContentRef.current.contains(e.target) && moreToggleRef.current && !moreToggleRef.current.contains(e.target))){
-        setIsDropDownVisible(false);
-        setIsDropDownMoreVisible(false);
+        setIsDropdownVisible(false);
+        setIsDropdownMoreVisible(false);
       }
     };
     document.addEventListener("click", handleOutsideClick);
     return () => {document.removeEventListener("click", handleOutsideClick);};}, []);
 
-
-  useEffect(() => {
-    const checkHiddenElements = () => {
-      const menuItems = document.querySelectorAll(".navMenuElement");
-      const newHiddenItems = [];
-  
-      menuItems.forEach((item, index) => {
-        if (window.getComputedStyle(item).display === "none") {
-          newHiddenItems.push(JSON.stringify(navNavLinks[index]));
-          }});
-        setHiddenItems(newHiddenItems);
-      };
-      window.addEventListener("resize", checkHiddenElements);
-      checkHiddenElements();
-      return () => window.removeEventListener("resize", checkHiddenElements);
-    }, []);
-
   return (
     <div className="navigation">
       <ul className="navMenu">
         <li className="navDropDown">
-          <a ref={catToggleRef} className={`navCatToggle ${isDropDownVisible ? "active" : ""}`} href="#" onClick={handleCategoryToggle}>
+          <a ref={catToggleRef} className={`navCatToggle ${isDropdownVisible ? "active" : ""}`} href="#" onClick={handleCategoryToggle}>
             <i className="fa-solid fa-bars"></i> CATEGORIES
           </a>
-          <ul ref={dropContentRef} className={`navDropDownContent ${isDropDownVisible ? "show" : ""}`}>
+          <ul ref={dropContentRef} className={`navDropDownContent ${isDropdownVisible ? "show" : ""}`}>
             {categories.map((category, index) => (
               <li key={index}>
                 <a href={category.link}>{category.name}</a>
@@ -253,33 +235,26 @@ export default function Navigation() {
         </li>
 {/*--------------------------------------MAIN-NAVIGATION-LINKS-------------------------------------------------*/}
         <li className="navMore">
-          <a ref={moreToggleRef} className={`navMoreToggle ${isDropDownMoreVisible ? "active" : ""}`} href="#" onClick={handleMoreToggle}>
-            MORE OPTIONS
+          <a ref={moreToggleRef} className="navCatToggle" href="#" onClick={handleMoreToggle}>
+            MORE
           </a>
-          <ul ref={moreDropContentRef} className={`navDropDownMore ${isDropDownMoreVisible ? "show" : ""}`}>
-          {hiddenItems.map((item, index) => {
-          const parsedItem = JSON.parse(item);
-          return (
-          <li key={index}>
-            <Link to={parsedItem.path}>
-              {navIcons[parsedItem.name] && (
-                <i className={navIcons[parsedItem.name]}></i>
-              )}
-              {parsedItem.name}
-            </Link>
-          </li>
-          );
-          })}
+          <ul ref={moreDropContentRef} className={`navDropDownMore ${isDropdownMoreVisible ? "show" : ""}`}>
+          {navNavLinks.map((item, index) => (
+            <li key={index}>
+              <Link to={item.path}>
+                {navIcons[item.name] && <i className={navIcons[item.name]}></i>}
+                {item.name}
+              </Link>
+            </li>))}
           </ul>
         </li>
         {navNavLinks.map((item, index) => (
-          <li className="navMenuElement" key={index}>
-            <Link className={`${location.pathname === item.path ? "active" : ""}`} to={item.path}>
-              {navIcons[item.name] && <i className={navIcons[item.name]}></i>}
-              {item.name}
-            </Link>
-          </li>
-        ))}
+        <li className="navMenuElement" key={index}>
+          <Link className={`${location.pathname === item.path ? "active" : ""}`} to={item.path}>
+            {navIcons[item.name] && <i className={navIcons[item.name]}></i>}
+            {item.name}
+          </Link>
+        </li>))}
       </ul>
     </div>
   );

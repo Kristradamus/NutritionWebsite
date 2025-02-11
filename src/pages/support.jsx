@@ -96,11 +96,11 @@ return (
       <input ref={searchInputRef} className="supportSearchBar" placeholder="Search for solution..." value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown} onFocus={() => setIsSearchFocused(true)}/>
       {searchQuery && (<i className="fa-solid fa-x" onClick={handleClearSearch}/>)}
     </div>
-    <div className={`supportContent ${Object.keys(filteredData).length === 0 || !Object.values(filteredData).some(category => category.length > 0) ? 'hidden' : ''}`}>
 {/*--------------------------------------SIDE-BAR-HTML--------------------------------------*/}
-      <div className={`supportSideBarBox ${Object.keys(filteredData).length === 0 || !Object.values(filteredData).some(category => category.length > 0) ? 'hidden' : ''}`}>
+    <div className="supportContent">
+      <div className="supportSideBar">
       {Object.keys(filteredData).map((category) => (
-        <div className="supportSideBar" key={category}>
+        <div key={category}>
           <h3>{category}</h3>
           <ul className="supportSideElements">
             {filteredData[category].map((item, index) => (

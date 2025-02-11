@@ -3,7 +3,6 @@
   margin: 0 auto;
   padding: 20px;
 }
-/*--------------------------------------SEARCH---------------------------------------*/
 .supportSearchBox {
   display:flex;
   flex-direction:row;
@@ -43,7 +42,7 @@
 }
 .supportSearchBox.clicked .fa-x{
     font-size: 20px;
-    color: var(--darker);
+    color: #000;
     position: absolute;
     right: 10px;
     top: 50%;
@@ -54,25 +53,18 @@
   display: flex;
   gap: 20px;
 }
-.supportContent.hidden{
-  gap:0px;
-}
-/*--------------------------------------SIDE-BAR--------------------------------------*/
-.supportSideBarBox {
-  width:300px;
+.supportSideBar {
   background-color:var(--white);
   box-shadow:var(--boxShadow);
   border-radius:var(--radius);
 }
-.supportSideBarBox.hidden{
-  width:0px;
-}
-.supportSideBar{
-  margin:20px 20px;
-}
 .supportSideBar h3 {
   margin-bottom: 10px;
-  color: var(--darker);
+  color: #333;
+}
+.supportSideElements {
+  list-style: none;
+  padding: 0;
 }
 .supportSideElement {
   margin-bottom: 10px;
@@ -85,7 +77,6 @@
 .supportSideElement a:hover {
   text-decoration: underline;
 }
-/*--------------------------------------MAIN---------------------------------------*/
 .supportMain {
   background-color:var(--white);
   box-shadow:var(--boxShadow);
@@ -93,11 +84,11 @@
   flex:1;
 }
 .supportMain h1 {
-  color: var(--darker);
+  color: #333;
   margin-bottom: 20px;
 }
 .supportMain p {
-  color: var(--darker);
+  color: #555;
   line-height: 1.6;
 }
 .backButton {
@@ -146,7 +137,7 @@
   .supportContent {
     flex-direction: column;
   }
-  .supportSideBarBox {
+  .supportSideBar {
     width: 100%;
   }
 }
