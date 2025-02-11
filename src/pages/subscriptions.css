@@ -1,0 +1,38 @@
+.subscriptions{
+    margin:0px;
+    padding:0px;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:center;
+}
+.subCategories{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin:30px 30px;
+    padding:0;
+}
+.subPlan{
+    border-radius:var(--radius);
+    background-color:var(--white);
+    margin:20px 20px;
+    width:100%;
+    max-width:400px;
+    height:100%;
+    box-shadow:var(--boxShadow);
+    justify-content:space-between;
+}
+.subcategories{
+    font-size: var(--font);
+    color:var(--green);
+}
+.subPrice{
+    display:flex;
+    flex-direction:row;
+}
+.subSidePrice{
+    display:flex;
+    flex-direction:column;
+}

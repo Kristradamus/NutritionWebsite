@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+  }
+  :root {
+    --green: #2e8b57;
+    --lightGreen: #45bb57c5;
+    --white: white;
+    --light: #f9f9f9;
+    --darker: rgb(73, 73, 73);
+    --dark: rgb(175, 175, 175);
+    --lightDark:#ececec;
+    --black:black;
+    --iconDistance:8px;
+    --radius:15px;
+    --font:15px;
+    --transition-a: 0.3s;
+    --boxShadow: 0 0 20px rgb(0, 0, 3, 0.2);
+    --boxShadowBottom: 0 10px 15px rgba(0, 0, 3, 0.2);
+  }
+  body {
+    background: var(--white);
+  }
+  a {
+    text-decoration: none;
+    color: var(--darker);
+  }
+  li {
+    list-style: none;
+  }
+  a,
+  .header,
+  .navigation,
+  .menu,
+  .search-box,
+  .search-bar {
+    display: flex;
+    flex-direction: row;
+  }

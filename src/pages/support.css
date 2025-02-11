@@ -1,0 +1,152 @@
+.support {
+  max-width: 80vw;
+  margin: 0 auto;
+  padding: 20px;
+}
+/*--------------------------------------SEARCH---------------------------------------*/
+.supportSearchBox {
+  display:flex;
+  flex-direction:row;
+  margin-bottom: 20px;
+  overflow:hidden;
+  background-color:var(--white);
+  box-shadow:var(--boxShadow);
+  border-radius: calc(var(--radius) + 5px);
+  border:1px solid var(--dark);
+  padding:10px 0px
+}
+.supportSearchBar{
+  position: relative;
+  outline: none;
+  background: transparent;
+  border: none;
+  flex: 1;
+  margin: 0 15px;
+  width: 100%;
+  font-size: var(--font);
+  color: var(--darker);
+  transition: all 0.3s ease;
+}
+.headerSearchBar::placeholder {
+  color: var(--darker);
+}
+.suppoortSearchBox.clicked{
+  border:20px solid var(--green);
+}
+.supportInput{
+  width: 100%;
+  padding: 10px;
+  font-size: var(--font);
+  animation:none;
+  outline:none;
+  border:none;
+}
+.supportSearchBox.clicked .fa-x{
+    font-size: 20px;
+    color: var(--darker);
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index:1000;
+}
+.supportContent {
+  display: flex;
+  gap: 20px;
+}
+.supportContent.hidden{
+  gap:0px;
+}
+/*--------------------------------------SIDE-BAR--------------------------------------*/
+.supportSideBarBox {
+  width:300px;
+  background-color:var(--white);
+  box-shadow:var(--boxShadow);
+  border-radius:var(--radius);
+}
+.supportSideBarBox.hidden{
+  width:0px;
+}
+.supportSideBar{
+  margin:20px 20px;
+}
+.supportSideBar h3 {
+  margin-bottom: 10px;
+  color: var(--darker);
+}
+.supportSideElement {
+  margin-bottom: 10px;
+}
+.supportSideElement a {
+  text-decoration: none;
+  color: var(--green);
+  font-weight: bold;
+}
+.supportSideElement a:hover {
+  text-decoration: underline;
+}
+/*--------------------------------------MAIN---------------------------------------*/
+.supportMain {
+  background-color:var(--white);
+  box-shadow:var(--boxShadow);
+  border-radius:var(--radius);
+  flex:1;
+}
+.supportMain h1 {
+  color: var(--darker);
+  margin-bottom: 20px;
+}
+.supportMain p {
+  color: var(--darker);
+  line-height: 1.6;
+}
+.backButton {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.contactButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.contactForm {
+  margin-top: 20px;
+}
+.contactForm label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.contactForm input,
+.contactForm textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.contactForm button {
+  padding: 10px 20px;
+  background-color: var(--green);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .supportContent {
+    flex-direction: column;
+  }
+  .supportSideBarBox {
+    width: 100%;
+  }
+}
